@@ -1,95 +1,68 @@
 ---
-title: Twitter Sentiment Analysis
-emoji: 🐠
-colorFrom: blue
-colorTo: purple
+title: Twitter Sentiment Analysis with PyTorch
+emoji: 💬
+colorFrom: purple
+colorTo: pink
 sdk: gradio
 sdk_version: 5.17.1
 app_file: app.py
 pinned: false
 license: mit
-short_description: Sentiment Analysis Project trained on Twitter Data
+short_description: Real-Time Sentiment Analysis on Airline Tweets using LSTM in PyTorch
 ---
 
-## 🚀 **Key Features**
-- **Text Sentiment Classification:** Predicts whether a given text expresses a positive or negative sentiment.
-- **Real-Time Predictions:** Provides instant results via a simple web interface.
-- **Visual Performance Metrics:** Displays accuracy and loss curves for model evaluation.
-- **User-Friendly Interface:** Built with **Gradio** for easy accessibility.
+## 🚀 **Overview**
 
----
-
-## 🛠️ **Technology Stack**
-- **Deep Learning:** TensorFlow Keras
-- **Text Tokenization:** Keras Tokenizer
-- **Web Interface:** Gradio
-- **Data Manipulation:** Pandas
-- **Visualization:** Matplotlib
+This project performs **real-time sentiment analysis** on airline-related tweets using a custom-built **LSTM model** in **PyTorch**. It classifies tweets as **positive** or **negative**, completely excluding neutral sentiments for a more opinion-focused analysis.
 
 ---
 
-## 📁 **File Structure**
-```plaintext
-sentiment-analysis-app
-│
-├── app.ipynb             # Main application notebook
-├── requirements.txt      # Required packages
-└── README.md             # Project documentation
-```
+## 🧩 **Key Features**
+
+- 🔎 **Text Sentiment Detection**: Predicts whether a tweet is **positive** or **negative**.
+- ⚡ **Real-Time Interface**: Built using **Gradio** for quick and intuitive interaction.
+- 🧠 **Custom LSTM Architecture**: A lightweight, efficient model built from scratch using **PyTorch**.
+- 🗂️ **Clean Data Pipeline**: Manual vocabulary creation, tokenization, and dynamic padding without external NLP libraries.
+- 📦 **Deployable Anywhere**: Lightweight, local, and Hugging Face-compatible app.
 
 ---
 
-## 💾 **Usage**
-1. **Train the Model:** Load the dataset, preprocess text, and train the LSTM model.
-2. **Visualize Performance:** View accuracy and loss plots for training and validation sets.
-3. **Predict Sentiment:** Enter a text review in the Gradio interface and receive the predicted sentiment.
+## 🛠️ **Tech Stack**
 
----
-
-## 📦 **Dependencies**
-```plaintext
-pandas
-matplotlib
-tensorflow
-gradio
-```
-
-Install dependencies using:
-```bash
-pip install -r requirements.txt
-```
+- **Deep Learning**: PyTorch  
+- **Data Handling**: Pandas  
+- **UI Interface**: Gradio  
+- **Model Type**: LSTM for binary sentiment classification  
+- **Tokenizer**: Custom word-level tokenizer  
+- **Inference**: Binary output (positive/negative) via Sigmoid
 
 ---
 
 ## 🧠 **How It Works**
-1. **Data Loading:** The dataset is loaded using **Pandas** and filtered to exclude neutral sentiments.
-2. **Text Tokenization:** Text is tokenized using Keras Tokenizer with a vocabulary size of **5000**.
-3. **Sequence Padding:** Tokenized sequences are padded to ensure uniform input length of **200**.
-4. **LSTM Model:** A sequential model with an embedding layer, LSTM layer, and dense output layer is trained.
-5. **Prediction:** Given an input text, the model predicts a sentiment label (**positive** or **negative**).
+
+1. **Dataset**: Loads the `"Tweets.csv"` file and filters out all **neutral** sentiments.
+2. **Preprocessing**:
+   - Lowercases and splits each tweet into tokens.
+   - Builds a custom vocabulary (`<PAD>` and `<UNK>` included).
+   - Converts text into indexed tensors.
+3. **Model**:
+   - Uses an `Embedding` layer followed by an `LSTM` and a `Linear` layer with `Sigmoid` activation.
+   - Optimized using `BCELoss` and `Adam` optimizer.
+4. **Training**:
+   - Trained over 10 epochs with batch-wise padding via `collate_fn`.
+   - Tracks and prints loss and accuracy for each epoch.
+5. **Inference**:
+   - Text input is tokenized, encoded, and passed through the model for prediction.
+   - Displays `positive` or `negative` based on threshold (0.5).
 
 ---
 
-## 🌐 **Access Live Demo**
-🔗 [Sentiment Analysis](https://huggingface.co/spaces/ajnx014/twitter-sentiment-analysis)
+## 📦 **File Structure**
 
----
-
-## 📝 **License**
-This project is licensed under the **MIT License**.
-
----
-
-## 🤝 **Contributing**
-Contributions are welcome! Feel free to fork the repository, create a new branch, and submit a pull request.
-
----
-
-## 📧 **Contact**
-For inquiries or support, please reach out to **[arjunjagdale14@gmail.com](mailto:arjunjagdale14@gmail.com)**.
-
----
-
-> **Author:** Arjun Jagdale  
-> **GitHub:** [ArjunJagdale](https://github.com/ArjunJagdale)  
-> **Project:** Sentiment Analysis with LSTM
+```plaintext
+sentiment-analysis-app/
+│
+├── app.py               # Main application script
+├── Tweets.csv           # Dataset file
+├── requirements.txt     # Project dependencies
+└── README.md            # Project documentation
