@@ -15,6 +15,11 @@ short_description: Real-Time Sentiment Analysis on Airline Tweets using LSTM in 
 
 This project performs **real-time sentiment analysis** on airline-related tweets using a custom-built **LSTM model** in **PyTorch**. It classifies tweets as **positive** or **negative**, completely excluding neutral sentiments for a more opinion-focused analysis.
 
+
+## Demo
+
+https://github.com/user-attachments/assets/521692ed-e979-47df-a52c-88969d3028ce
+
 ---
 
 ## 🧩 **Key Features**
